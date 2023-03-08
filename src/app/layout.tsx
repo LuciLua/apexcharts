@@ -1,10 +1,12 @@
-import ThemeContextProvider from "../contexts/themeContext"
+// import ThemeContextProvider from "../contexts/themeContext"
 import "../styles/globals.scss"
-import {Inter} from "next/font/google"
+import { Inter } from "next/font/google"
+import BtnTheme from "../components/BtnTheme/BtnTheme"
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function RootApp({ children }) {
+
     return (
         <html lang="en">
             <head>
@@ -14,9 +16,8 @@ export default function RootApp({ children }) {
                 <title>Graph</title>
             </head>
             <body className={`${inter.className} dark`}>
-                <ThemeContextProvider>
-                    {children}
-                </ThemeContextProvider>
+                <BtnTheme />
+                {children}
             </body>
         </html>
     )
