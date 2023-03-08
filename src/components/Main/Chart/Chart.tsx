@@ -1,14 +1,11 @@
 'use client'
 
 import { Suspense } from "react";
-// import dynamic from 'next/dynamic';
-import Chart from "react-apexcharts";
+import dynamic from 'next/dynamic';
+// import Chart from "react-apexcharts";
+const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 function ChartComponent() {
-
-    // const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
-
-
     const options: ApexCharts.ApexOptions = {
         series: [
             {
@@ -35,11 +32,14 @@ function ChartComponent() {
     return (
         <>
             <Suspense fallback={<p>Loading......</p>}>
-                <Chart
-                    options={options}
-                    series={options.series}
-                    width='500'
-                    type="line" />
+                {typeof window !== "undefined" || typeof window !== undefined ?
+                    <Chart
+                        options={options}
+                        series={options.series}
+                        height={400}
+                        width={500}
+                        type="line" /> :
+                    null}
             </Suspense>
         </>
     )
