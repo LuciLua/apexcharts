@@ -1,0 +1,8 @@
+.container{
+    width: var(--widthContainer);
+    height: var(--heightContainer);
+    background-color: var(--bgColorComponent);
+
+    border-radius: 10px;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.045);
+}
